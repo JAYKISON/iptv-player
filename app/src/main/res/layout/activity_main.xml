@@ -1,67 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    android:padding="12dp">
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:fitsSystemWindows="true"
+	android:orientation="vertical"
+	android:padding="12dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+	<LinearLayout
+		android:id="@+id/sourcePanel"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/urlInput"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="URL da lista M3U"
-            android:imeOptions="actionGo"
-            android:inputType="textUri"
-            android:singleLine="true" />
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Entrar com login do provedor"
+			android:textColor="#FFFFFF"
+			android:textSize="16sp"
+			android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnLoad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Carregar" />
-    </LinearLayout>
+		<EditText
+			android:id="@+id/serverInput"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="Link do servidor (ex: http://servidor.com:8080)"
+			android:inputType="textUri"
+			android:singleLine="true" />
 
-    <Button
-        android:id="@+id/btnFile"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Abrir arquivo .m3u do aparelho" />
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Buscar canal"
-        android:inputType="text"
-        android:singleLine="true" />
+			<EditText
+				android:id="@+id/userInput"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:hint="Usuário"
+				android:inputType="text"
+				android:singleLine="true" />
 
-    <Spinner
-        android:id="@+id/groupSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp" />
+			<EditText
+				android:id="@+id/passInput"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="8dp"
+				android:layout_weight="1"
+				android:hint="Senha"
+				android:imeOptions="actionGo"
+				android:inputType="textPassword"
+				android:singleLine="true" />
+		</LinearLayout>
 
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:text="Carregue uma lista M3U para começar. Toque e segure um canal para favoritar."
-        android:textColor="#B0B0B0" />
+		<Button
+			android:id="@+id/btnLogin"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Entrar" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingTop="8dp"
+			android:text="ou use um link/arquivo M3U"
+			android:textColor="#B0B0B0" />
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+
+			<EditText
+				android:id="@+id/urlInput"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:hint="URL da lista M3U"
+				android:imeOptions="actionGo"
+				android:inputType="textUri"
+				android:singleLine="true" />
+
+			<Button
+				android:id="@+id/btnLoad"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="8dp"
+				android:text="Carregar" />
+		</LinearLayout>
+
+		<Button
+			android:id="@+id/btnFile"
+			style="?attr/materialButtonOutlinedStyle"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Abrir arquivo .m3u do aparelho" />
+	</LinearLayout>
+
+	<Button
+		android:id="@+id/btnToggle"
+		style="?attr/materialButtonOutlinedStyle"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Trocar login / lista"
+		android:visibility="gone" />
+
+	<EditText
+		android:id="@+id/search"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="Buscar canal"
+		android:inputType="text"
+		android:singleLine="true" />
+
+	<Spinner
+		android:id="@+id/groupSpinner"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:minHeight="48dp" />
+
+	<TextView
+		android:id="@+id/status"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingTop="4dp"
+		android:paddingBottom="4dp"
+		android:text="Entre com seu login ou carregue uma lista M3U."
+		android:textColor="#B0B0B0" />
+
+	<androidx.recyclerview.widget.RecyclerView
+		android:id="@+id/list"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1" />
 </LinearLayout>
