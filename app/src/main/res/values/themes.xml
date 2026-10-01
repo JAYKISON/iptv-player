@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.IPTV" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">#E53935</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:windowBackground">#121212</item>
+        <item name="android:statusBarColor">#121212</item>
+    </style>
+</resources>
